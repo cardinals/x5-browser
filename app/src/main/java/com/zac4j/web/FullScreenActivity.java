@@ -13,14 +13,13 @@ import com.zac4j.web.utils.X5WebView;
 public class FullScreenActivity extends Activity {
 
   /**
-   * 用于演示X5webview实现视频的全屏播放功能 其中注意 X5的默认全屏方式 与 android 系统的全屏方式
+   * 用于演示 X5 WebView 实现视频的全屏播放功能，其中注意 X5 的默认全屏方式 与 Android 系统的全屏方式
    */
 
   X5WebView webView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    // TODO Auto-generated method stub
     super.onCreate(savedInstanceState);
     setContentView(R.layout.filechooser_layout);
     webView = findViewById(R.id.web_filechooser);
@@ -33,7 +32,6 @@ public class FullScreenActivity extends Activity {
 
       @Override
       public void onJsFunctionCalled(String tag) {
-        // TODO Auto-generated method stub
 
       }
 
@@ -61,7 +59,6 @@ public class FullScreenActivity extends Activity {
 
   @Override
   public void onConfigurationChanged(Configuration newConfig) {
-    // TODO Auto-generated method stub
     try {
       super.onConfigurationChanged(newConfig);
       if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {

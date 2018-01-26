@@ -1,51 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main_layout"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/main_root_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
 
-    <TextView
-        android:id="@+id/tip"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:text="@string/tip"
-        android:textColor="#ff0000"
-        android:textIsSelectable="false"
-        android:textSize="10sp" />
+  <TextView
+      android:id="@id/main_btn_tbs_tips"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:text="@string/tip"
+      android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+      android:textColor="#ff0000"
+      android:textIsSelectable="false"
+      />
+  <Button
+      android:id="@id/main_btn_tbs_browser"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/space.middle"
+      android:text="@string/main_tbs_browser"
+      style="@style/Widget.AppCompat.Button.Colored"
+      />
+  <Button
+      android:id="@id/main_btn_tbs_video"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/main_video_player"
+      style="@style/Widget.AppCompat.Button.Colored"
+      />
 
-    <RelativeLayout
-        android:id="@+id/first_Text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tip"
-        android:background="#ffffff" >
+  <Button
+      android:id="@id/main_btn_file_chooser"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/main_file_chooser"
+      style="@style/Widget.AppCompat.Button.Colored"
+      />
 
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="@string/tag"
-            android:textColor="@android:color/black"
-            android:textIsSelectable="false"
-            android:textSize="15sp"
-            android:textStyle="italic" />
-    </RelativeLayout>
-
-    <GridView
-        android:id="@+id/item_grid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/first_Text"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="1dp"
-        android:background="#ebebeb"
-        android:gravity="center_horizontal"
-        android:horizontalSpacing="1dp"
-        android:numColumns="3"
-        android:paddingTop="1dp"
-        android:verticalSpacing="1dp" />
-
-</RelativeLayout>
+</LinearLayout>

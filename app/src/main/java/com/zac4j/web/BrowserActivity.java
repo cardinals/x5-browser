@@ -17,9 +17,7 @@ import android.os.Message;
 import android.os.Process;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
@@ -46,7 +44,7 @@ import com.tencent.smtt.utils.TbsLog;
 
 public class BrowserActivity extends Activity {
   /**
-   * 作为一个浏览器的示例展示出来，采用android+web的模式
+   * 作为一个浏览器的示例展示出来，采用 Android + Web 的模式
    */
   private X5WebView mWebView;
   private ViewGroup mViewParent;
@@ -98,7 +96,7 @@ public class BrowserActivity extends Activity {
     }
 
 		/*
-		 * getWindow().addFlags(
+     * getWindow().addFlags(
 		 * android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		 */
     setContentView(R.layout.activity_main);
@@ -230,7 +228,6 @@ public class BrowserActivity extends Activity {
 
               @Override
               public void onClick(DialogInterface dialog, int which) {
-                // TODO Auto-generated method stub
                 Toast.makeText(BrowserActivity.this, "fake message: refuse download...",
                     Toast.LENGTH_SHORT).show();
               }
@@ -239,7 +236,6 @@ public class BrowserActivity extends Activity {
 
               @Override
               public void onCancel(DialogInterface dialog) {
-                // TODO Auto-generated method stub
                 Toast.makeText(BrowserActivity.this, "fake message: refuse download...",
                     Toast.LENGTH_SHORT).show();
               }
@@ -364,8 +360,6 @@ public class BrowserActivity extends Activity {
 
       @Override
       public void afterTextChanged(Editable s) {
-        // TODO Auto-generated method stub
-
         String url = null;
         if (mUrl.getText() != null) {
           url = mUrl.getText().toString();
@@ -382,13 +376,10 @@ public class BrowserActivity extends Activity {
 
       @Override
       public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-        // TODO Auto-generated method stub
-
       }
 
       @Override
       public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-        // TODO Auto-generated method stub
 
       }
     });
