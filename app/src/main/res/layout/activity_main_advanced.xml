@@ -7,7 +7,7 @@
     >
 
   <TextView
-      android:id="@id/main_btn_tbs_tips"
+      android:id="@id/main_tbs_tips"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:gravity="center"

@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.tencent.smtt.sdk.QbSdk;
 
-public class APP extends Application {
+public class App extends Application {
 
   @Override
   public void onCreate() {

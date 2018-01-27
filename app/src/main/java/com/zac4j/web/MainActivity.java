@@ -1,119 +1,28 @@
 package com.zac4j.web;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Process;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.GridView;
-import android.widget.SimpleAdapter;
 
-public class MainActivity extends Activity {
-
-  public static boolean firstOpening = true;
-  private static String[] titles = null;
-
-  public static final int MSG_WEBVIEW_CONSTRUCTOR = 1;
-  public static final int MSG_WEBVIEW_POLLING = 2;
-
-  // add constant here
-  private static final int TBS_WEB = 0;
-  private static final int FULL_SCREEN_VIDEO = 1;
-  private static final int FILE_CHOOSER = 2;
-
-  // for view init
-  private Context mContext = null;
-  private SimpleAdapter gridAdapter;
-  private GridView gridView;
-  private ArrayList<HashMap<String, Object>> items;
-
-  private static boolean mIsDataInitialized = false;
+public class MainActivity extends Activity implements View.OnClickListener {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main_advanced);
-    mContext = this;
-    if (!mIsDataInitialized) {
-      this.new_init();
-    }
+
+    updateUi();
   }
 
-  @Override
-  protected void onResume() {
-    this.new_init();
-
-    super.onResume();
-  }
-
-  private void new_init() {
-    items = new ArrayList<>();
-    this.gridView = this.findViewById(R.id.item_grid);
-
-    if (gridView == null) throw new IllegalArgumentException("the gridView is null");
-
-    titles = getResources().getStringArray(R.array.index_titles);
-    int[] iconResources = {
-        R.drawable.tbsweb, R.drawable.fullscreen, R.drawable.filechooser
-    };
-
-    HashMap<String, Object> item;
-    for (int i = 0; i < titles.length; i++) {
-      item = new HashMap<>();
-      item.put("title", titles[i]);
-      item.put("icon", iconResources[i]);
-
-      items.add(item);
-    }
-    this.gridAdapter =
-        new SimpleAdapter(this, items, R.layout.function_block, new String[] { "title", "icon" },
-            new int[] { R.id.Item_text, R.id.Item_bt });
-    if (null != this.gridView) {
-      this.gridView.setAdapter(gridAdapter);
-      this.gridAdapter.notifyDataSetChanged();
-      this.gridView.setOnItemClickListener(new OnItemClickListener() {
-
-        @Override
-        public void onItemClick(AdapterView<?> gridView, View view, int position, long id) {
-          Intent intent = null;
-          switch (position) {
-            case FILE_CHOOSER: {
-              intent = new Intent(MainActivity.this, FileChooserActivity.class);
-              MainActivity.this.startActivity(intent);
-            }
-            break;
-            case FULL_SCREEN_VIDEO: {
-              intent = new Intent(MainActivity.this, FullScreenActivity.class);
-              MainActivity.this.startActivity(intent);
-            }
-            break;
-
-            case TBS_WEB: {
-              intent = new Intent(MainActivity.this, BrowserActivity.class);
-              MainActivity.this.startActivity(intent);
-            }
-            break;
-          }
-        }
-      });
-    }
-    mIsDataInitialized = true;
-  }
-
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    return true;
+  private void updateUi() {
+    findViewById(R.id.main_btn_tbs_browser).setOnClickListener(this);
+    findViewById(R.id.main_btn_tbs_video).setOnClickListener(this);
+    findViewById(R.id.main_btn_file_chooser).setOnClickListener(this);
   }
 
   @Override
@@ -126,8 +35,7 @@ public class MainActivity extends Activity {
   }
 
   private void tbsSuiteExit() {
-    // exit TbsSuite?
-    AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+    AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
     dialog.setTitle("X5功能演示");
     dialog.setPositiveButton("OK", new AlertDialog.OnClickListener() {
 
@@ -138,5 +46,23 @@ public class MainActivity extends Activity {
     });
     dialog.setMessage("quit now?");
     dialog.create().show();
+  }
+
+  @Override
+  public void onClick(View view) {
+    Intent intent;
+    switch (view.getId()) {
+      case R.id.main_btn_file_chooser:
+        intent = new Intent(MainActivity.this, FileChooserActivity.class);
+        MainActivity.this.startActivity(intent);
+        break;
+      case R.id.main_btn_tbs_video:
+        intent = new Intent(MainActivity.this, FullScreenActivity.class);
+        MainActivity.this.startActivity(intent);
+        break;
+      case R.id.main_btn_tbs_browser:
+        intent = new Intent(MainActivity.this, BrowserActivity.class);
+        MainActivity.this.startActivity(intent);
+    }
   }
 }

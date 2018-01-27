@@ -4,6 +4,6 @@
   <item name="main_btn_tbs_browser" type="id"/>
   <item name="main_btn_tbs_video" type="id"/>
   <item name="main_btn_file_chooser" type="id"/>
-  <item name="main_btn_tbs_tips" type="id"/>
+  <item name="main_tbs_tips" type="id"/>
   <item name="main_root_layout" type="id"/>
 </resources>

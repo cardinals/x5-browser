@@ -43,6 +43,9 @@ import com.tencent.smtt.sdk.WebViewClient;
 import com.tencent.smtt.utils.TbsLog;
 
 public class BrowserActivity extends Activity {
+
+  private static final String TAG = BrowserActivity.class.getSimpleName();
+
   /**
    * 作为一个浏览器的示例展示出来，采用 Android + Web 的模式
    */
@@ -57,7 +60,6 @@ public class BrowserActivity extends Activity {
   private EditText mUrl;
 
   private static final String mHomeUrl = "http://app.html5.qq.com/navi/index";
-  private static final String TAG = "SdkDemo";
   private static final int MAX_LENGTH = 14;
   private boolean mNeedTestPage = false;
 
@@ -158,7 +160,7 @@ public class BrowserActivity extends Activity {
         // mTestHandler.sendEmptyMessage(MSG_OPEN_TEST_URL);
         mTestHandler.sendEmptyMessageDelayed(MSG_OPEN_TEST_URL, 5000);// 5s?
         if (Integer.parseInt(android.os.Build.VERSION.SDK) >= 16) changGoForwardButton(view);
-				/* mWebView.showLog("test Log"); */
+        /* mWebView.showLog("test Log"); */
       }
     });
 
@@ -221,7 +223,8 @@ public class BrowserActivity extends Activity {
             .setPositiveButton("yes", new DialogInterface.OnClickListener() {
               @Override
               public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(BrowserActivity.this, "fake message: i'll download...", 1000).show();
+                Toast.makeText(BrowserActivity.this, "fake message: i'll download...",
+                    Toast.LENGTH_LONG).show();
               }
             })
             .setNegativeButton("no", new DialogInterface.OnClickListener() {
